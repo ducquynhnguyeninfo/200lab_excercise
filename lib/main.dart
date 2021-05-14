@@ -3,6 +3,7 @@ import 'package:hw1_layout/day1/bai1.dart';
 import 'package:hw1_layout/day1/bai3.dart';
 
 import 'day1/bai2.dart';
+import 'day2/screen1.dart';
 
 void main() {
   runApp(MyApp());
@@ -57,6 +58,12 @@ class MyHomePage extends StatelessWidget {
                       new MaterialPageRoute(builder: (context) => Bai3()));
                 },
                 child: Text("Color palette 3")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      new MaterialPageRoute(builder: (context) => ScreenLogin()));
+                },
+                child: Text("Login1")),
           ],
         ),
       ),

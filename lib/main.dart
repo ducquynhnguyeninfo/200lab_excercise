@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 
-import 'home_page.dart';
-
-void main() {
-  runApp(MyApp());
-}
+void main() {}
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'FT01',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text("HOme"),
+      ),
     );
   }
 }

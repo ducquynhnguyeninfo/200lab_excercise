@@ -4,6 +4,10 @@ import 'package:ft01_flutter_tinder_app/values/app_images.dart';
 import 'package:ft01_flutter_tinder_app/values/app_text_style.dart';
 
 class CardItem extends StatefulWidget {
+  final String? title;
+
+  CardItem({Key? key, this.title}) : super(key: key);
+
   @override
   _CardItemState createState() => _CardItemState();
 }
@@ -18,8 +22,6 @@ class _CardItemState extends State<CardItem> {
   int indexImage = 0;
 
   PageController pageController = PageController();
-
-  GlobalKey globalKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -97,8 +99,8 @@ class _CardItemState extends State<CardItem> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
-                                width: 4,
-                                height: 4,
+                                width: 3,
+                                height: 3,
                                 decoration: BoxDecoration(
                                     color: AppColor.lightGrey,
                                     shape: BoxShape.circle),

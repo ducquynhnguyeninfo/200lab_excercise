@@ -43,9 +43,13 @@ class _HomePageState extends State<HomePage> {
         child: SizedBox(
           width: size.width * 0.9,
           height: size.height * 0.75,
-          child: CardItem(),
+          child: CardItem(
+            key: UniqueKey(),
+          ),
         ),
       ),
     );
   }
+
+  GlobalKey globalKey = GlobalKey();
 }

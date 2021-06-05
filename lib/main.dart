@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ft01_flutter_tinder_app/home/home_page.dart';
-import 'package:ft01_flutter_tinder_app/root/root_page.dart';
+import 'package:ft01_flutter_tinder_app/login/lading_page.dart';
+import 'package:ft01_flutter_tinder_app/login/login_page.dart';
 import 'package:ft01_flutter_tinder_app/values/app_color.dart';
 import 'package:ft01_flutter_tinder_app/values/app_text_style.dart';
-
-import 'demo_keys /build_context_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,7 +29,7 @@ class MyApp extends StatelessWidget {
             unselectedLabelStyle: TextStyle(color: AppColor.lightGreyW200),
           ),
           scaffoldBackgroundColor: AppColor.backgroundColor),
-      home: RootPage(),
+      home: LadingPage(),
     );
   }
 }

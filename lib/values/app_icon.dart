@@ -7,4 +7,5 @@ class AppIcon {
   static const String icMessage = appIconPath + 'ic_message.png';
   static const String icNotification = appIconPath + 'ic_notification.png';
   static const String icPofile = appIconPath + 'ic_profile.png';
+  static const String icLogo = appIconPath + 'ic_logo.png';
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ft01_flutter_tinder_app/home/widgets/card_item.dart';
-import 'package:ft01_flutter_tinder_app/values/app_color.dart';
 import 'package:ft01_flutter_tinder_app/values/app_icon.dart';
 import 'package:ft01_flutter_tinder_app/values/app_text_style.dart';
 

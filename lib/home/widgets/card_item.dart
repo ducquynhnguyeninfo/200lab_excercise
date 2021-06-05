@@ -119,7 +119,7 @@ class _CardItemState extends State<CardItem> {
                               Text(
                                 'Versatile',
                               ),
-                              Text(
+                              Text( 
                                 'Seattle, USA',
                               ),
                             ],

@@ -20,4 +20,7 @@ class AppTextStyle {
       fontSize: 22,
       fontFamily: AppFontFamily.sfProText,
       color: AppColor.black);
+
+  static const TextStyle body14White =
+      TextStyle(color: Colors.white, fontSize: 14);
 }

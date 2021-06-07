@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:ft01_flutter_tinder_app/home/home_page.dart';
-import 'package:ft01_flutter_tinder_app/message/message_page.dart';
-import 'package:ft01_flutter_tinder_app/notification/notification_page.dart';
-import 'package:ft01_flutter_tinder_app/profile/profile_page.dart';
+import 'package:ft01_flutter_tinder_app/models/user.dart';
+import 'package:ft01_flutter_tinder_app/modules/home/home_page.dart';
+import 'package:ft01_flutter_tinder_app/modules/message/message_page.dart';
+import 'package:ft01_flutter_tinder_app/modules/notification/notification_page.dart';
+import 'package:ft01_flutter_tinder_app/modules/profile/profile_page.dart';
 import 'package:ft01_flutter_tinder_app/values/app_color.dart';
 import 'package:ft01_flutter_tinder_app/values/app_icon.dart';
 
 class RootPage extends StatefulWidget {
+  final List<User>? user;
+
+  RootPage({Key? key, this.user}) : super(key: key);
+
   @override
   _RootPageState createState() => _RootPageState();
 }
@@ -17,7 +22,12 @@ class _RootPageState extends State<RootPage> {
 
   @override
   void initState() {
-    pages = [HomePage(), MessagePage(), NotificationPage(), ProfilePage()];
+    pages = [
+      HomePage(users: widget.user),
+      MessagePage(),
+      NotificationPage(),
+      ProfilePage()
+    ];
     super.initState();
   }
 

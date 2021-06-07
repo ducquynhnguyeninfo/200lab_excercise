@@ -18,8 +18,9 @@ class ShareService {
     return await _preferences.setString(key, value);
   }
 
-  String? getString(String key) {
-    return _preferences.getString(key);
+  String getString(String key) {
+    String? value = _preferences.getString(key);
+    return value ?? "";
   }
 
   ShareService._internal();

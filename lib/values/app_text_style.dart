@@ -21,6 +21,12 @@ class AppTextStyle {
       fontFamily: AppFontFamily.sfProText,
       color: AppColor.black);
 
+  static const TextStyle titleCardWhite = TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: 22,
+      fontFamily: AppFontFamily.sfProText,
+      color: Colors.white);
+
   static const TextStyle body14White =
       TextStyle(color: Colors.white, fontSize: 14);
 }

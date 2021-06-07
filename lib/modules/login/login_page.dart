@@ -1,13 +1,10 @@
-import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ft01_flutter_tinder_app/common_widget/app_field.dart';
 import 'package:ft01_flutter_tinder_app/common_widget/app_flat_button.dart';
 import 'package:ft01_flutter_tinder_app/common_widget/loading_widget.dart';
 import 'package:ft01_flutter_tinder_app/models/login.dart';
-import 'package:ft01_flutter_tinder_app/services/api.dart';
+import 'package:ft01_flutter_tinder_app/modules/root/root_page.dart';
 import 'package:ft01_flutter_tinder_app/services/apis/login_api.dart';
 import 'package:ft01_flutter_tinder_app/services/share_services.dart';
 import 'package:ft01_flutter_tinder_app/values/app_icon.dart';
@@ -43,7 +40,8 @@ class _LoginPageState extends State<LoginPage> {
 
     ShareService _share = await ShareService().getInstance();
     _share.setString(value: loginModel?.token ?? " ", key: ShareKey.token);
-
+    Navigator.pushAndRemoveUntil(
+        context, MaterialPageRoute(builder: (_) => RootPage()), (_) => true);
     setState(() => busy = false);
   }
 
@@ -51,7 +49,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.white));
-
     return Scaffold(
       body: Container(
           alignment: Alignment.center,

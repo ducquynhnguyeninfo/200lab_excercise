@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ft01_flutter_tinder_app/login/lading_page.dart';
-import 'package:ft01_flutter_tinder_app/login/login_page.dart';
+import 'package:ft01_flutter_tinder_app/animation_demo/animations_page.dart';
+import 'package:ft01_flutter_tinder_app/modules/login/lading_page.dart';
 import 'package:ft01_flutter_tinder_app/values/app_color.dart';
 import 'package:ft01_flutter_tinder_app/values/app_text_style.dart';
 
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             unselectedLabelStyle: TextStyle(color: AppColor.lightGreyW200),
           ),
           scaffoldBackgroundColor: AppColor.backgroundColor),
-      home: LadingPage(),
+      home: AnimationPage(),
     );
   }
 }

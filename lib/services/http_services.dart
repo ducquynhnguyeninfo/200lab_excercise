@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'package:ft01_flutter_tinder_app/services/share_services.dart';
 import 'package:ft01_flutter_tinder_app/utils/helper.dart';
 import 'package:ft01_flutter_tinder_app/values/app_data.dart';
+import 'package:ft01_flutter_tinder_app/values/share_key.dart';
 import 'package:http/http.dart' as http;
 
 class HttpService {
@@ -67,15 +69,24 @@ class HttpService {
     return this;
   }
 
-  getHeader() async {
-    return {'content-type': 'application/json'};
+  getHeader({bool? withToken}) async {
+    Map<String, String> headers = Map();
+    ShareService shareService = await ShareService().getInstance();
+    if (withToken ?? false) {
+      headers['Authorization'] =
+          'bearer ${shareService.getString(ShareKey.token)}';
+      headers['content-type'] = 'application/json';
+    } else {
+      headers['content-type'] = 'application/json';
+    }
+    return headers;
   }
 
   /// Call api service and notify error or response success data
 
   Future<ResponseObject> execute() async {
     var httpClient = http.Client();
-    Map<String, String> headers = await this.getHeader();
+    Map<String, String> headers = await this.getHeader(withToken: true);
     ResponseObject responseObject = new ResponseObject();
     Future<http.Response> exec;
 

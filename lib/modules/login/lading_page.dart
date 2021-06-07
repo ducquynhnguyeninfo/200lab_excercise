@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ft01_flutter_tinder_app/common_widget/app_field.dart';
-import 'package:ft01_flutter_tinder_app/common_widget/app_flat_button.dart';
 import 'package:ft01_flutter_tinder_app/common_widget/loading_widget.dart';
-import 'package:ft01_flutter_tinder_app/models/login.dart';
-import 'package:ft01_flutter_tinder_app/services/api.dart';
-import 'package:ft01_flutter_tinder_app/services/apis/login_api.dart';
+import 'package:ft01_flutter_tinder_app/models/user.dart';
+import 'package:ft01_flutter_tinder_app/modules/login/login_page.dart';
+import 'package:ft01_flutter_tinder_app/modules/root/root_page.dart';
+import 'package:ft01_flutter_tinder_app/services/apis/user_api.dart';
 import 'package:ft01_flutter_tinder_app/services/share_services.dart';
-import 'package:ft01_flutter_tinder_app/values/app_icon.dart';
 import 'package:ft01_flutter_tinder_app/values/app_images.dart';
 import 'package:ft01_flutter_tinder_app/values/share_key.dart';
 
@@ -19,17 +17,30 @@ class LadingPage extends StatefulWidget {
 }
 
 class _LadingPageState extends State<LadingPage> {
-  bool busy = false;
+  bool isLogined = false;
 
   @override
   void initState() {
     super.initState();
+    fetchLogin();
   }
 
-  Future<void> login() async {
-    setState(() => busy = true);
-
-    setState(() => busy = false);
+  fetchLogin() async {
+    ShareService shareService = await ShareService().getInstance();
+    isLogined = shareService.getString(ShareKey.token).isNotEmpty;
+    if (isLogined) {
+      List<User> users = await UserApi().getUsers();
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+              builder: (_) => RootPage(
+                    user: users,
+                  )),
+          (_) => false);
+    } else {
+      Navigator.pushAndRemoveUntil(context,
+          MaterialPageRoute(builder: (_) => LoginPage()), (_) => false);
+    }
   }
 
   @override

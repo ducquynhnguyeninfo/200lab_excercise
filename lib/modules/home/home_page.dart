@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ft01_flutter_tinder_app/common_widget/draggable_card.dart';
+import 'package:ft01_flutter_tinder_app/library/tcard/cards.dart';
 import 'package:ft01_flutter_tinder_app/models/user.dart';
 import 'package:ft01_flutter_tinder_app/modules/home/users/user_profile.dart';
 import 'package:ft01_flutter_tinder_app/modules/home/widgets/card_item.dart';
@@ -8,20 +9,19 @@ import 'package:ft01_flutter_tinder_app/values/app_icon.dart';
 import 'package:ft01_flutter_tinder_app/values/app_text_style.dart';
 
 class HomePage extends StatefulWidget {
-  final List<User>? users;
+  final List<User> users;
 
-  HomePage({Key? key, this.users}) : super(key: key);
+  HomePage({Key? key, required this.users}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  PageController pageController = PageController();
+  late List<User> users;
 
-  late List<User>? users;
-
-  int countOf = 0;
+  double countOf = 0;
+  int currentIndex = 0;
 
   @override
   void initState() {
@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -57,14 +58,14 @@ class _HomePageState extends State<HomePage> {
         ],
         elevation: 0,
       ),
-      body: users == null
+      body: users.isEmpty
           ? Container()
           : Stack(
-              children: users!
+              children: users
                   .map(
                     (e) => DraggableCard(
-                      card: sizeCard(e),
-                      isDraggable: countOf < users!.length,
+                      card: cardItem(e),
+                      isDraggable: countOf < users.length,
                       onSlideOutComplete: (_) {
                         setState(() {
                           countOf++;
@@ -74,10 +75,11 @@ class _HomePageState extends State<HomePage> {
                   )
                   .toList(),
             ),
+      // body: TCard(cards: users.map((e) => cardItem(e)).toList()),
     );
   }
 
-  Widget sizeCard(User user) {
+  Widget cardItem(User user) {
     return Hero(
       tag: 'header-hero${user.id}',
       child: Material(

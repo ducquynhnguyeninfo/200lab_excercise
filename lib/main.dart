@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             unselectedLabelStyle: TextStyle(color: AppColor.lightGreyW200),
           ),
           scaffoldBackgroundColor: AppColor.backgroundColor),
-      home: AnimationPage(),
+      home: LadingPage(),
     );
   }
 }

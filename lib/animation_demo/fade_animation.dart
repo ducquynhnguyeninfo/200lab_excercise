@@ -19,7 +19,7 @@ class _FadeAnimationPageState extends State<FadeAnimationPage> {
       body: Center(
         child: AnimatedOpacity(
           opacity: _visible ? 1.0 : 0.0,
-          duration: Duration(milliseconds: 500),
+          duration: Duration(milliseconds: 1000),
           child: Container(
             width: 200,
             height: 200,

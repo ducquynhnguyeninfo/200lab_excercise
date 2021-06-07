@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:ft01_flutter_tinder_app/models/login.dart';
 import 'package:ft01_flutter_tinder_app/models/user.dart';
 import 'package:ft01_flutter_tinder_app/services/http_services.dart';
 import 'package:ft01_flutter_tinder_app/values/app_data.dart';

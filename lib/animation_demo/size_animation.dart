@@ -10,6 +10,7 @@ class SizeAnimationPage extends StatefulWidget {
 class _SizeAnimationPageState extends State<SizeAnimationPage>
     with TickerProviderStateMixin {
   double height = 100;
+  double width = 100;
 
   @override
   Widget build(BuildContext context) {
@@ -18,39 +19,16 @@ class _SizeAnimationPageState extends State<SizeAnimationPage>
         title: Text('Size Animation'),
       ),
       body: Center(
-        child: Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: AnimatedContainer(
-                duration: Duration(milliseconds: 500),
-                curve: Curves.bounceInOut,
-                height: height,
-                width: 100,
-                color: Colors.green,
-                alignment: Alignment.center,
-                child: Text('AnimatedContainer'),
-              ),
-            ),
-            VerticalDivider(
-              color: Colors.red,
-            ),
-            Expanded(
-              flex: 1,
-              child: AnimatedSize(
-                duration: Duration(milliseconds: 500),
-                reverseDuration: Duration(milliseconds: 500),
-                curve: Curves.bounceInOut,
-                child: Container(
-                  width: 100,
-                  height: height,
-                  alignment: Alignment.center,
-                  color: Colors.white,
-                  child: Text('Size Container'),
-                ),
-              ),
-            ),
-          ],
+        child: AnimatedSize(
+          vsync: this,
+          duration: Duration(seconds: 3),
+          curve: Curves.fastLinearToSlowEaseIn,
+          alignment: Alignment.center,
+          child: Container(
+              height: height,
+              width: width,
+              color: Colors.green,
+              child: Text('AnimatedContainer')),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -58,8 +36,10 @@ class _SizeAnimationPageState extends State<SizeAnimationPage>
             setState(() {
               if (height > 100) {
                 height = 100;
+                width = 100;
               } else {
                 height = 300;
+                width = 300;
               }
             });
           },

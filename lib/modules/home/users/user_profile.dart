@@ -27,6 +27,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        elevation: 0,
         leading: GestureDetector(
           onTap: () {
             Navigator.pop(context);
@@ -47,32 +48,34 @@ class _UserProfilePageState extends State<UserProfilePage> {
   }
 
   Widget _buildAbout() {
-    return Container();
+    return Container(
+      height: 400,
+      width: 300,
+      color: Colors.red,
+    );
   }
 
   Widget _buildHeader(Size size) {
-    return Material(
-      child: Hero(
-        tag: 'header-hero${user.id}',
-        child: Stack(
-          children: [
-            Container(
-                height: size.height * 0.8,
-                child: Image.asset(
-                  AppImage.candy,
-                  fit: BoxFit.fitHeight,
-                )),
-            Container(
-              width: double.infinity,
+    return Hero(
+      tag: 'header-hero${user.id}',
+      child: Stack(
+        children: [
+          Container(
               height: size.height * 0.8,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [AppColor.backgroundColor, Colors.transparent])),
-            ),
-          ],
-        ),
+              child: Image.asset(
+                AppImage.candy,
+                fit: BoxFit.fitHeight,
+              )),
+          Container(
+            width: double.infinity,
+            height: size.height * 0.8,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [AppColor.backgroundColor, Colors.transparent])),
+          ),
+        ],
       ),
     );
   }

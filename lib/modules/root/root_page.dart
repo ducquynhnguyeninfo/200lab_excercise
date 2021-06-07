@@ -8,9 +8,9 @@ import 'package:ft01_flutter_tinder_app/values/app_color.dart';
 import 'package:ft01_flutter_tinder_app/values/app_icon.dart';
 
 class RootPage extends StatefulWidget {
-  final List<User>? user;
+  final List<User> user;
 
-  RootPage({Key? key, this.user}) : super(key: key);
+  RootPage({Key? key, required this.user}) : super(key: key);
 
   @override
   _RootPageState createState() => _RootPageState();
@@ -23,7 +23,9 @@ class _RootPageState extends State<RootPage> {
   @override
   void initState() {
     pages = [
-      HomePage(users: widget.user),
+      HomePage(
+        users: widget.user,
+      ),
       MessagePage(),
       NotificationPage(),
       ProfilePage()

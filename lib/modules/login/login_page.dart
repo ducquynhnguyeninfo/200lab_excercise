@@ -4,8 +4,10 @@ import 'package:ft01_flutter_tinder_app/common_widget/app_field.dart';
 import 'package:ft01_flutter_tinder_app/common_widget/app_flat_button.dart';
 import 'package:ft01_flutter_tinder_app/common_widget/loading_widget.dart';
 import 'package:ft01_flutter_tinder_app/models/login.dart';
+import 'package:ft01_flutter_tinder_app/models/user.dart';
 import 'package:ft01_flutter_tinder_app/modules/root/root_page.dart';
 import 'package:ft01_flutter_tinder_app/services/apis/login_api.dart';
+import 'package:ft01_flutter_tinder_app/services/apis/user_api.dart';
 import 'package:ft01_flutter_tinder_app/services/share_services.dart';
 import 'package:ft01_flutter_tinder_app/values/app_icon.dart';
 import 'package:ft01_flutter_tinder_app/values/app_images.dart';
@@ -38,10 +40,17 @@ class _LoginPageState extends State<LoginPage> {
     loginModel =
         await LoginApi().login(userController.text, pwdController.text);
 
+    List<User> newList = await UserApi().getUsers();
+
     ShareService _share = await ShareService().getInstance();
     _share.setString(value: loginModel?.token ?? " ", key: ShareKey.token);
     Navigator.pushAndRemoveUntil(
-        context, MaterialPageRoute(builder: (_) => RootPage()), (_) => true);
+        context,
+        MaterialPageRoute(
+            builder: (_) => RootPage(
+                  user: newList,
+                )),
+        (_) => false);
     setState(() => busy = false);
   }
 

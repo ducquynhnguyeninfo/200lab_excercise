@@ -149,7 +149,7 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                               child: Row(
                                 children: [
                                   Text(
-                                    'Versatile',
+                                    user.address ?? "",
                                   ),
                                   Text(
                                     'Seattle, USA',

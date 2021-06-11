@@ -21,7 +21,8 @@ class LoadingWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(12.0),
                 child: AspectRatio(
                     aspectRatio: 1,
-                    child: CircularProgressIndicator(color: Colors.white)),
+                    child: CircularProgressIndicator(
+                        backgroundColor: Colors.white)),
               )),
           Expanded(
               flex: 4,

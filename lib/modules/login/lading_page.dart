@@ -9,14 +9,14 @@ import 'package:ft01_flutter_tinder_app/services/share_services.dart';
 import 'package:ft01_flutter_tinder_app/values/app_images.dart';
 import 'package:ft01_flutter_tinder_app/values/share_key.dart';
 
-class LadingPage extends StatefulWidget {
-  const LadingPage({Key? key}) : super(key: key);
+class LandingPage extends StatefulWidget {
+  const LandingPage({Key? key}) : super(key: key);
 
   @override
-  _LadingPageState createState() => _LadingPageState();
+  _LandingPageState createState() => _LandingPageState();
 }
 
-class _LadingPageState extends State<LadingPage> {
+class _LandingPageState extends State<LandingPage> {
   bool isLogined = false;
 
   @override

@@ -18,7 +18,6 @@ class _ScreenLoginState extends State<ScreenLogin> {
 
   @override
   void didChangeDependencies() async {
-    // TODO: implement didChangeDependencies
 
     var sharedPref = await SharedPreferences.getInstance();
     setState(() {
@@ -28,6 +27,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
       }
     });
 
+    sharedPref.setBool(SharedKey.isFirstTime, !this.isFirstTime);
     super.didChangeDependencies();
   }
 
@@ -178,8 +178,5 @@ class _ScreenLoginState extends State<ScreenLogin> {
   void dispose() async {
     super.dispose();
 
-    var sharedPref = await SharedPreferences.getInstance();
-    // this.isFirstTime = sharedPref.getBool(SharedKey.isFirstTime);
-    sharedPref.setBool(SharedKey.isFirstTime, !this.isFirstTime);
   }
 }
